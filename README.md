@@ -27,4 +27,4 @@ This project implements a **SPWM (Sinusoidal Pulse Width Modulation) based inver
 - **LM7905 generates -5V**
 - **Ensures MOSFETs fully turn OFF**
 
-- 
+More details please reading my Blogger "https://bobhongdoghouse.blogspot.com/2025/01/diy-dc-ac-inverter.html"
