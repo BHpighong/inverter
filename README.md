@@ -1,7 +1,7 @@
 # This is a SPWM Inverter (PIC16F1829)
 
 ## 📌 Project Overview
-This project implements a **SPWM (Sinusoidal Pulse Width Modulation) based inverter** using **PIC16F1829**, generating a **50Hz AC output** through an **H-Bridge with MOSFET drivers** to achieve **DC-AC conversion**.
+This project implements a **SPWM (Sine Pulse Width Modulation) based inverter** using **PIC16F1829**, generating a **50Hz AC output** through an **H-Bridge with MOSFET drivers** to achieve **DC-AC conversion**.
 
 - **Input Voltage**: DC 24V  
 - **Output Voltage**: AC 24V  
