@@ -24,7 +24,6 @@ This project implements a **SPWM (Sinusoidal Pulse Width Modulation) based inver
 - **MOSFETs are controlled by 1EDC20I12AH driver**
 
 ### 3️⃣ **Negative Voltage Generation**
-- **LM7905 generates -5V**
 - **Ensures MOSFETs fully turn OFF**
 
 More details please reading my Blogger "https://bobhongdoghouse.blogspot.com/2025/01/diy-dc-ac-inverter.html"
