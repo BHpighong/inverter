@@ -1,8 +1,8 @@
 /* 
  * File:   main.c
  * Author: bh.hong
- * purpose inverter, AC24, 50Hz sinewave generator
- * MCU : PIC16F1829
+ * Purpose: inverter,50Hz sinewave generator, AC24
+ * MCU: PIC16F1829
  * Created on 2025_Jan_26, 15:39
  */
 #include <xc.h> 
@@ -12,7 +12,7 @@
 
 // 64 points SPWM lut?1023 PWM 10-bit
 const unsigned int LUT[64] = {
-        25, 50, 74, 99, 124, 148, 172, 195,
+    25, 50, 74, 99, 124, 148, 172, 195,
     218, 240, 262, 283, 304, 324, 343, 361,
     378, 395, 410, 424, 438, 450, 461, 472,
     481, 488, 495, 501, 505, 508, 510, 511,
@@ -21,6 +21,7 @@ const unsigned int LUT[64] = {
     343, 324, 304, 283, 262, 240, 218, 195,
     172, 148, 124, 99, 74, 50, 25, 0
 }; // lu table
+
 unsigned char lut_index = 0; // LUT index
 unsigned char direction = 0; // H direction (0 = Forward, 1 = Reverse)
 
@@ -31,12 +32,12 @@ void __interrupt() ISR() {
 
         // Set Full-Bridge Model (Change direction every 64 points)
         if (lut_index == 0) {
+            //Change H-bridge direction
             direction = !direction;  //Reverse direction of full-bridge
-            CCP1CONbits.P1M0 = 1; // P1M0(bit7) = 1 ; Set Full-Bridge Model
-            CCP1CONbits.P1M1 = direction; // change H-bridge // P1M1(bit6) Forward  Reverse change
+            CCP1CONbits.P1M0 = 1; // P1M0(bit7) = 1 ; Set Full-Bridge Forward Model
+            CCP1CONbits.P1M1 = direction; // P1M1(bit6) Forward  Reverse change
         }
 
-        
         // Get PWM Duty Cycle
         unsigned int duty = LUT[lut_index];
 
@@ -64,7 +65,6 @@ void setupPWM() {
     CCP1CON = 0b00001100; // ECCP; Full-Bridge Forward Model
     PWM1CON = 0b10000000; // enable PWM enable Dead-Time
     PSTR1CON = 0b00001100; // Enable Full-Bridge PWM output (P1A, P1B, P1C, P1D)
-//    PSTR1CON = 0b00011111; // Enable Full-Bridge PWM output (P1A, P1B, P1C, P1D)
 
     // Setting Dead-Time Protect H_bridge
     PWM1CONbits.P1DC = 5; // cinfig Dead-Time = 5 clock's period
