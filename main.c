@@ -2,7 +2,7 @@
  * File:   main.c
  * Author: bh.hong
  * purpose inverter, AC24, 50Hz sinewave generator
- *MCU : PIC16F1829
+ * MCU : PIC16F1829
  * Created on 2025_Jan_26, 15:39
  */
 #include <xc.h> 
@@ -62,7 +62,7 @@ void setupPWM() {
 
     // set Full-Bridge PWM (initial Forward)
     CCP1CON = 0b00001100; // ECCP; Full-Bridge Forward Model
-    PWM1CON = 0b10000000; // enable PWM?enable Dead-Time
+    PWM1CON = 0b10000000; // enable PWM enable Dead-Time
     PSTR1CON = 0b00001100; // Enable Full-Bridge PWM output (P1A, P1B, P1C, P1D)
 //    PSTR1CON = 0b00011111; // Enable Full-Bridge PWM output (P1A, P1B, P1C, P1D)
 
